@@ -1,0 +1,3 @@
+Laporan > Rekap Penjualan
+	- tampilkan kolom Metode pembayaran & detail pembayaran (jika selain tunai)
+	- perbaikan tampilan print, ambil samplenya dari kasir yang lama
