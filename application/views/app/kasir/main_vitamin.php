@@ -302,7 +302,7 @@
 						</p>
 					</div>
 					<div class="align-self-center">
-						<div class="input-group input-group-xs" style="width: 150px;">
+						<div class="input-group input-group-xs" style="width: 200px;">
 							<div class="input-group-prepend">
 								<button type="button" class="btn btn-danger btn-sm" onClick="decreseQty('qty_keranjang_${k.item_id}');"><i class="fas fa-minus"></i></button>
 							</div>
