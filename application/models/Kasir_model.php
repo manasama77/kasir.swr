@@ -169,8 +169,7 @@ class Kasir_model extends CI_Model
 					tblitem_price.start_period <= NOW() 
 					AND tblitem_price.item_id = tblitem.item_id 
 				ORDER BY
-					tblitem_price.created_date DESC,
-					tblitem_price.start_period DESC
+					tblitem_price.created_date DESC
 					LIMIT 1 
 				) AS start_period,
 				(
@@ -182,8 +181,7 @@ class Kasir_model extends CI_Model
 					tblitem_price.start_period <= NOW() 
 					AND tblitem_price.item_id = tblitem.item_id 
 				ORDER BY
-					tblitem_price.created_date DESC,
-					tblitem_price.start_period DESC
+					tblitem_price.created_date DESC
 					LIMIT 1 
 				) AS buying_price,
 				(
