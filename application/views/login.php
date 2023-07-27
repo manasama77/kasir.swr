@@ -5,10 +5,11 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="Aplikasi Kasir <?= APP_NAME; ?>" />
-	<meta name="author" content="Adam PM@2022-02-01" />
+	<!-- <meta name="description" content="Aplikasi Kasir <?= APP_NAME; ?>" /> -->
+	<meta name="description" content="Aplikasi Kasir BY Trijaya Solution" />
+	<meta name="author" content="Trijaya Solution" />
 	<meta name="msapplication-TileColor" content="#2C489B">
-	<meta name="msapplication-TileImage" content="<?= base_url('assets/img/favicon/ms-icon-144x144.png'); ?>">
+	<meta name="msapplication-TileImage" content="<?= base_url('assets/img/toko_trijaya123.jpg'); ?>">
 	<meta name="theme-color" content="#2C489B">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +41,7 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="<?= base_url(); ?>assets/img/favicon/favicon-16x16.png">
 	<link rel="manifest" href="<?= base_url('assets/img/favicon/manifest.json'); ?>">
 
-	<title>Login Kasir | <?= APP_NAME; ?></title>
+	<title>Login Kasir | BY Trijaya Solution </title>
 </head>
 
 <body>
@@ -56,8 +57,9 @@
 				</div>
 			<?php } ?>
 			<div class="illustration">
-				<img src="<?= base_url('assets/img/logo swr frozen food.jpeg'); ?>" alt="Logo SWR Frozen Food" class="img-fluid" />
+				<img src="<?= base_url('assets/img/light.png'); ?>" alt="Trijaya Solution" class="img-fluid" />
 			</div>
+			<center><span style="color:#fff;"><strong>Login Aplikasi Kasir</strong></span></center>
 			<div class="form-group">
 				<input class="form-control" type="text" id="username" name="username" placeholder="Username" required>
 			</div>
@@ -68,7 +70,13 @@
 				<button type="submit" class="btn btn-primary btn-block" id="submit">Masuk</button>
 			</div>
 			<div class="div d-flex justify-content-center">
-				<small><?= APP_NAME; ?> <?= APP_YEAR; ?> <?= APP_VERSION; ?></small>
+			   <small><b>Akses login kasir</b></br>
+                  Username : kasir</br>
+                  Password : kasir@123
+                  </br> </br>
+			    <p style="color:#fff;"> © 2023 - Developed by <a href="https://trijayasolution.co.id">Trijaya Solution </a> </p> </small>
+			   
+				<!-- <small><?= APP_NAME; ?> <?= APP_YEAR; ?> <?= APP_VERSION; ?></small> -->
 			</div>
 		</form>
 	</div>

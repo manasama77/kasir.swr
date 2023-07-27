@@ -6,7 +6,8 @@
 	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 </head>
 
-<body onload="window.print();">
+<!-- <body onload="window.print();"> -->
+<body>
 	<?php
 	$tgl_obj = new DateTime($arr_sales->row()->created_date);
 	if ($arr_sales->row()->payment_type == 1) {
@@ -19,9 +20,9 @@
 		$metode_pembayaran = "TRANSFER";
 	}
 	?>
-	<div style="font-size:6px; font-family:'Verdana'; width:100%;">
-		<label style="font-size:8px; display:block; width:x; height:y; text-align:center;"><strong><?= $arr_company->row()->company_name; ?></strong></label>
-		<p style="text-align:center;"><strong><?= $arr_company->row()->address; ?></strong></p>
+	<div style="font-size:6px; font-family:'Consolas'; width:100%;">
+		<label style="font-size:10px; display:block; width:x; height:y; text-align:center;"><strong><?= $arr_company->row()->company_name; ?></strong></label>
+		<p style="text-align:center; font-size:8px;"><strong><?= $arr_company->row()->address; ?></strong></p>
 		<br>
 		<br>
 		<table style="width:100%">
