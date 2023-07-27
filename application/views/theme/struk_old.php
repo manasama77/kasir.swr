@@ -7,6 +7,7 @@
 </head>
 
 <!-- <body onload="window.print();"> -->
+
 <body>
 	<?php
 	$tgl_obj = new DateTime($arr_sales->row()->created_date);
@@ -20,9 +21,9 @@
 		$metode_pembayaran = "TRANSFER";
 	}
 	?>
-	<div style="font-size:6px; font-family:'Consolas'; width:100%;">
-		<label style="font-size:10px; display:block; width:x; height:y; text-align:center;"><strong><?= $arr_company->row()->company_name; ?></strong></label>
-		<p style="text-align:center; font-size:8px;"><strong><?= $arr_company->row()->address; ?></strong></p>
+	<div style="font-size:8px; font-family:'Consolas'; width:100%;">
+		<label style="font-size:12px; display:block; width:x; height:y; text-align:center;"><strong><?= $arr_company->row()->company_name; ?></strong></label>
+		<p style="text-align:center; font-size:10px;"><strong><?= $arr_company->row()->address; ?></strong></p>
 		<br>
 		<br>
 		<table style="width:100%">
