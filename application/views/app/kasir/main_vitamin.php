@@ -216,6 +216,9 @@
 						let item_name = k.item_name
 						let selling_price = k.selling_price
 						let selling_price_idr = k.selling_price_idr
+						let harga_grosir = k.harga_grosir
+						let minimal_pembelian = k.minimal_pembelian
+						let harga_grosir_idr = k.harga_grosir_idr
 						let unit_name = k.unit_name
 						let qty = k.qty
 						let foto_filename = k.foto_filename
@@ -223,10 +226,17 @@
 						let keranjang = JSON.parse(window.localStorage.getItem('keranjang'))
 						let hasil_pencarian = keranjang.find(keranjang => keranjang.item_id == item_id)
 						if (hasil_pencarian === undefined) {
+							let qty_add = 1;
+
+							if (qty_add >= minimal_pembelian && minimal_pembelian > 0) {
+								selling_price = harga_grosir
+								selling_price_idr = harga_grosir_idr
+							}
+
 							let isian = {
 								item_id: item_id,
 								item_name: item_name,
-								qty: 1,
+								qty: qty_add,
 								satuan: unit_name,
 								selling_price: selling_price,
 								selling_price_idr: selling_price_idr,
@@ -257,6 +267,12 @@
 								})
 							} else {
 								hasil_pencarian.qty += 1
+
+								if (hasil_pencarian.qty >= minimal_pembelian && minimal_pembelian > 0) {
+									selling_price = harga_grosir
+									selling_price_idr = harga_grosir_idr
+								}
+
 								hasil_pencarian.sub_total = parseInt(hasil_pencarian.sub_total) + parseInt(selling_price)
 								hasil_pencarian.sub_total_idr = new Intl.NumberFormat('id-ID', {
 									minimumFractionDigits: 0
@@ -639,6 +655,28 @@
 
 				if (hasil_pencarian !== undefined) {
 					hasil_pencarian.qty = parseInt(new_qty)
+
+					if (e.data[0].minimal_pembelian > 0) {
+						if (hasil_pencarian.qty >= e.data[0].minimal_pembelian) {
+							Swal.fire({
+								icon: 'success',
+								title: `Harga grosir aktif`,
+								toast: true,
+								position: 'bottom-end',
+								showConfirmButton: false,
+								timer: 3000
+							})
+							hasil_pencarian.selling_price = e.data[0].harga_grosir
+							hasil_pencarian.selling_price_idr = e.data[0].harga_grosir_idr
+						} else {
+							hasil_pencarian.selling_price = e.data[0].selling_price
+							hasil_pencarian.selling_price_idr = e.data[0].selling_price_idr
+						}
+					} else {
+						hasil_pencarian.selling_price = e.data[0].selling_price
+						hasil_pencarian.selling_price_idr = e.data[0].selling_price_idr
+					}
+
 					hasil_pencarian.sub_total = parseInt(hasil_pencarian.selling_price) * parseInt(new_qty)
 					hasil_pencarian.sub_total_idr = new Intl.NumberFormat('id-ID', {
 						minimumFractionDigits: 0

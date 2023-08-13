@@ -91,7 +91,33 @@ class Kasir_model extends CI_Model
 				ORDER BY
 					tblitem_price.created_date DESC 
 					LIMIT 1 
-			) AS selling_price 
+			) AS selling_price,
+			
+			(
+				SELECT
+					tblitem_price.harga_grosir 
+				FROM
+					tblitem_price 
+				WHERE
+					tblitem_price.start_period <= NOW() 
+					AND tblitem_price.item_id = tblitem.item_id 
+				ORDER BY
+					tblitem_price.created_date DESC
+					LIMIT 1 
+				) AS harga_grosir,
+
+			(
+			SELECT
+				tblitem_price.minimal_pembelian 
+			FROM
+				tblitem_price 
+			WHERE
+				tblitem_price.start_period <= NOW() 
+				AND tblitem_price.item_id = tblitem.item_id 
+			ORDER BY
+				tblitem_price.created_date DESC
+				LIMIT 1 
+			) AS minimal_pembelian
 		FROM
 			tblitem 
 			LEFT JOIN tblunit ON tblunit.unit_id = tblitem.unit_id
@@ -113,8 +139,11 @@ class Kasir_model extends CI_Model
 			$start_period      = $key->start_period;
 			$buying_price      = $key->buying_price;
 			$selling_price     = $key->selling_price;
+			$harga_grosir      = $key->harga_grosir;
+			$minimal_pembelian = $key->minimal_pembelian;
 			$buying_price_idr  = number_format($key->buying_price, 0, ',', '.');
 			$selling_price_idr = number_format($key->selling_price, 0, ',', '.');
+			$harga_grosir_idr  = number_format($key->harga_grosir, 0, ',', '.');
 			$qty               = $key->qty;
 
 			$nest = [
@@ -126,8 +155,11 @@ class Kasir_model extends CI_Model
 				'start_period'      => $start_period,
 				'buying_price'      => $buying_price,
 				'selling_price'     => $selling_price,
+				'harga_grosir'      => $harga_grosir ?? 0,
+				'minimal_pembelian' => $minimal_pembelian ?? 0,
 				'buying_price_idr'  => $buying_price_idr,
 				'selling_price_idr' => $selling_price_idr,
+				'harga_grosir_idr'  => $harga_grosir_idr ?? 0,
 				'qty'               => $qty,
 			];
 			array_push($data, $nest);
@@ -195,7 +227,33 @@ class Kasir_model extends CI_Model
 				ORDER BY
 					tblitem_price.created_date DESC
 					LIMIT 1 
-				) AS selling_price 
+				) AS selling_price,
+
+				(
+				SELECT
+					tblitem_price.harga_grosir 
+				FROM
+					tblitem_price 
+				WHERE
+					tblitem_price.start_period <= NOW() 
+					AND tblitem_price.item_id = tblitem.item_id 
+				ORDER BY
+					tblitem_price.created_date DESC
+					LIMIT 1 
+				) AS harga_grosir,
+
+				(
+				SELECT
+					tblitem_price.minimal_pembelian 
+				FROM
+					tblitem_price 
+				WHERE
+					tblitem_price.start_period <= NOW() 
+					AND tblitem_price.item_id = tblitem.item_id 
+				ORDER BY
+					tblitem_price.created_date DESC
+					LIMIT 1 
+				) AS minimal_pembelian
 			FROM
 				tblitem 
 			WHERE 
